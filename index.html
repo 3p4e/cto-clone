@@ -22,16 +22,16 @@ tailwind.config = {
         'engine-void-70': '#4f4f4f',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Geist', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
       }
     }
   }
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  body { font-family: 'Inter', system-ui, sans-serif; background: #fffdfc; }
+  body { font-family: 'Geist', 'Inter', system-ui, sans-serif; background: #fffdfc; }
   .hero-grid {
     background-image: linear-gradient(rgba(0,0,0,.045) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(0,0,0,.045) 1px, transparent 1px);
@@ -64,6 +64,18 @@ tailwind.config = {
   .fade-up-1 { animation-delay: .08s; } .fade-up-2 { animation-delay: .16s; } .fade-up-3 { animation-delay: .24s; }
   details > summary { list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .homepage-submit-glow { animation: none !important; }
+    .caret { animation: none !important; opacity: 1 !important; }
+    .fade-up { animation: none !important; }
+  }
 </style>
 </head>
 <body class="bg-engine-sage text-[#070708] antialiased">
@@ -125,7 +137,7 @@ tailwind.config = {
               </button>
               <div id="modelMenu" class="absolute bottom-12 left-0 z-20 hidden w-48 overflow-hidden rounded-[10px] border border-black/10 bg-white shadow-xl">
                 <div class="p-1 text-sm">
-                  <button onclick="pickModel('Auto model')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5">✨ Auto model</button>
+                  <button onclick="pickModel('Auto model')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5"><span class="inline-flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg> Auto model</span></button>
                   <button onclick="pickModel('Claude')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5">Claude</button>
                   <button onclick="pickModel('GPT')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5">GPT</button>
                   <button onclick="pickModel('Gemini')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5">Gemini</button>
@@ -310,9 +322,9 @@ tailwind.config = {
       <h3 class="text-2xl font-semibold tracking-tight">Free forever</h3>
       <p class="text-white/60 leading-relaxed">Ad-supported. No card or API keys required. Limits reset daily, with an optional Premium upgrade.</p>
       <ul class="mt-2 space-y-2 text-sm text-white/70">
-        <li class="flex items-center gap-2"><span class="text-cto-blue">✓</span> No card or API keys required</li>
-        <li class="flex items-center gap-2"><span class="text-cto-blue">✓</span> Limits reset daily</li>
-        <li class="flex items-center gap-2"><span class="text-cto-blue">✓</span> Optional Premium upgrade</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> No card or API keys required</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Limits reset daily</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Optional Premium upgrade</li>
       </ul>
     </div>
 
@@ -339,8 +351,8 @@ tailwind.config = {
       <h3 class="text-2xl font-semibold tracking-tight">Agents that work</h3>
       <p class="text-white/60 leading-relaxed">Multi-agent teams with web browsing, emails, scheduling, and more built-in.</p>
       <ul class="mt-2 space-y-2 text-sm text-white/70">
-        <li class="flex items-center gap-2"><span class="text-cto-blue">✓</span> Multi-agent teams</li>
-        <li class="flex items-center gap-2"><span class="text-cto-blue">✓</span> Web browsing, emails, scheduling built-in</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Multi-agent teams</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Web browsing, emails, scheduling built-in</li>
       </ul>
     </div>
 
@@ -432,10 +444,10 @@ tailwind.config = {
   <div class="w-full max-w-sm rounded-2xl border border-black/10 bg-white p-6 shadow-2xl">
     <div class="flex items-center justify-between">
       <h3 id="modalTitle" class="text-lg font-semibold">Create your account</h3>
-      <button onclick="closeModal()" class="text-black/40 hover:text-black" aria-label="Close">✕</button>
+      <button onclick="closeModal()" class="text-black/40 hover:text-black" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
     </div>
     <p class="mt-1 text-sm text-black/50">Free forever. No credit card required.</p>
-    <form class="mt-5 space-y-3" onsubmit="event.preventDefault();closeModal();toast('This is a static clone — wire up your auth backend here.')">
+    <form class="mt-5 space-y-3" onsubmit="event.preventDefault();closeModal();toast('This is a static clone - wire up your auth backend here.')">
       <input type="email" required placeholder="Email" class="w-full rounded-[10px] border border-black/15 px-3 py-2.5 text-sm focus:border-cto-blue focus:outline-none">
       <input type="password" required placeholder="Password" class="w-full rounded-[10px] border border-black/15 px-3 py-2.5 text-sm focus:border-cto-blue focus:outline-none">
       <button class="w-full rounded-[10px] bg-cto-blue py-2.5 text-sm font-medium text-white shadow-md hover:bg-cto-blue/90">Continue</button>
@@ -511,7 +523,7 @@ function submitPrompt() {
   const t1 = document.getElementById('prompt');
   const t2 = document.getElementById('prompt2');
   const v = (t1.value || t2.value).trim();
-  if (!v) { toast('Describe what you want to build first ✍️'); (t1.value ? t2 : t1).focus(); return; }
+  if (!v) { toast('Describe what you want to build first'); (t1.value ? t2 : t1).focus(); return; }
   openModal('signup');
 }
 
