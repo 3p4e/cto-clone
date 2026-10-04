@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cto - Build anything with AI. Free forever.</title>
+<meta name="description" content="Build apps, agents and startups on the best AI models. No credit card or API key required.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'cto-blue': '#2d1dff',
+        'cto-dark-blue': '#1f1c31',
+        'cto-off-black': '#0e0c14',
+        'cto-white': '#fff',
+        'cto-border': '#ccc',
+        'engine-sage': '#fffdfc',
+        'engine-ghost': '#f2f4f8',
+        'engine-void-50': '#7e7e7e',
+        'engine-void-70': '#4f4f4f',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      }
+    }
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; background: #fffdfc; }
+  .hero-grid {
+    background-image: linear-gradient(rgba(0,0,0,.045) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,0,0,.045) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 75%);
+  }
+  .card-grid {
+    background-image: linear-gradient(rgba(0,0,0,1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,0,0,1) 1px, transparent 1px);
+    background-size: 36px 36px;
+    opacity: .04;
+  }
+  .dark-grid {
+    background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+    background-size: 36px 36px;
+    opacity: .05;
+  }
+  @keyframes submitGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(45,29,255,.45), 0 4px 14px rgba(45,29,255,.35); }
+    50% { box-shadow: 0 0 0 6px rgba(45,29,255,0), 0 4px 22px rgba(45,29,255,.55); }
+  }
+  .homepage-submit-glow { animation: submitGlow 2.4s ease-in-out infinite; }
+  .typing-placeholder::after { content: attr(data-ph); color: #7e7e7e; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .caret { animation: blink 1s step-end infinite; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px);} to { opacity:1; transform: translateY(0);} }
+  .fade-up { animation: fadeUp .7s cubic-bezier(.22,.68,0,1) both; }
+  .fade-up-1 { animation-delay: .08s; } .fade-up-2 { animation-delay: .16s; } .fade-up-3 { animation-delay: .24s; }
+  details > summary { list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+</style>
+</head>
+<body class="bg-engine-sage text-[#070708] antialiased">
+
+<!-- ===================== HEADER ===================== -->
+<header class="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-black/5 bg-engine-sage/80 backdrop-blur-md px-6">
+  <div class="flex items-center">
+    <a aria-label="cto.new home" href="#" class="flex items-center gap-2">
+      <!-- cto wordmark (recreated shape) -->
+      <svg viewBox="0 0 40 21" fill="none" class="h-8 fill-black" aria-hidden="true">
+        <path d="M8.5 20.9c-2.9 0-5.4-1.3-6.7-3.6C.6 15.5.1 13.2.1 10.5S.6 5.5 1.8 3.7C3.1 1.3 5.6.1 8.5.1c1.6 0 3 .4 4.1 1.1l-1.3 3.2c-.8-.5-1.7-.8-2.7-.8-2.9 0-4.7 2.3-4.7 6.9s1.8 6.9 4.7 6.9c1 0 1.9-.3 2.7-.8l1.3 3.2c-1.1.7-2.5 1.1-4.1 1.1z"/>
+        <path d="M19.6 20.9c-1.9 0-3.4-.6-4.4-1.7-1-1.1-1.5-2.7-1.5-4.7V3.4h3.9v2.1h2.9v3h-2.9v5.7c0 1.5.7 2.2 2.1 2.2.4 0 .8 0 1.1-.1l.4 3.2c-.6.3-1.3.4-2.6.4z" transform="translate(0,-0.5)"/>
+        <path d="M28.5 20.9c-2.9 0-5.3-1-7-2.9-1.6-1.9-2.4-4.4-2.4-7.5s.8-5.6 2.4-7.5c1.7-1.9 4.1-2.9 7-2.9s5.3 1 7 2.9c1.6 1.9 2.4 4.4 2.4 7.5s-.8 5.6-2.4 7.5c-1.7 1.9-4.1 2.9-7 2.9zm0-3.5c1.7 0 3-.6 3.9-1.8.9-1.2 1.4-2.9 1.4-5.1s-.5-3.9-1.4-5.1c-.9-1.2-2.2-1.8-3.9-1.8s-3 .6-3.9 1.8c-.9 1.2-1.4 2.9-1.4 5.1s.5 3.9 1.4 5.1c.9 1.2 2.2 1.8 3.9 1.8z"/>
+      </svg>
+    </a>
+  </div>
+
+  <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+    <a class="tracking-[0.01em] hover:text-black/50 transition-colors" href="#">Pricing</a>
+    <a class="tracking-[0.01em] hover:text-black/50 transition-colors" href="#marketplace">Marketplace</a>
+    <a class="tracking-[0.01em] hover:text-black/50 transition-colors" href="#">Docs</a>
+  </nav>
+
+  <div class="flex items-center space-x-3">
+    <a aria-label="Join our Discord community" href="#" class="hidden sm:block text-[#545365] hover:text-black transition-colors">
+      <svg class="w-5 h-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019M5.347 10.214c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/></svg>
+    </a>
+    <button onclick="openModal('signup')" class="flex h-9 items-center justify-center rounded-[10px] bg-cto-blue px-3 text-[13px] font-medium text-white shadow-md transition-colors hover:bg-cto-blue/90 w-28">Sign up for free</button>
+    <button onclick="openModal('signin')" class="flex h-9 items-center justify-center rounded-[10px] bg-white/70 px-3 text-[13px] font-medium text-black shadow-md transition-colors hover:bg-white w-16">Sign in</button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<main>
+<section class="relative flex min-h-[calc(100dvh-64px)] flex-col items-center justify-center px-4 pb-16 overflow-hidden">
+  <div class="hero-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative flex w-full flex-col items-center justify-center space-y-10">
+    <div class="space-y-4 text-center">
+      <h1 class="fade-up text-center text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05]">
+        <span class="block md:inline">Build your </span><span class="whitespace-nowrap">business with AI.</span><br>Free forever.
+      </h1>
+      <h2 class="fade-up fade-up-1 w-full text-center text-base md:text-lg text-black/60">
+        Start or grow your company by chatting with AI.<br>No credit card required.
+      </h2>
+    </div>
+
+    <div class="fade-up fade-up-2 w-full max-w-3xl md:px-6">
+      <!-- Prompt box -->
+      <div class="overflow-hidden rounded-[20px] border border-cto-border bg-white shadow-md transition-shadow focus-within:shadow-lg focus-within:border-cto-blue/40">
+        <textarea id="prompt" rows="1" autofocus aria-label="Describe the business you want to build"
+          class="flex min-h-14 w-full resize-none border-0 bg-transparent px-4 pt-4 text-base text-black placeholder:text-black/40 focus:outline-none focus:ring-0"
+          placeholder=""></textarea>
+        <div class="flex flex-col gap-2 rounded-b-[20px] bg-engine-sage px-4 py-3 sm:flex-row sm:items-center sm:justify-between border-t border-black/5">
+          <div class="flex items-center gap-2">
+            <div class="relative">
+              <button id="modelBtn" onclick="toggleDropdown('modelMenu')" class="group flex h-10 w-full sm:w-48 items-center justify-between rounded-[10px] border border-black/10 bg-white px-2.5 text-xs text-black transition-colors hover:border-cto-blue hover:text-cto-blue">
+                <span class="flex items-center space-x-2">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.41 10.45h.945L6.88 9.015h2.24l.525 1.435h.98L8.49 4.85H7.51L5.41 10.45Zm1.75-2.24L7.965 5.9h.07L8.84 8.21H7.16ZM8 15c-.968 0-1.878-.184-2.73-.552C4.418 14.081 3.678 13.582 3.048 12.953c-.63-.63-1.129-1.371-1.496-2.223C1.184 9.878 1 8.968 1 8c0-.502.053-.995.158-1.479.105-.485.257-.954.455-1.409l1.085 1.085a5.6 5.6 0 1 0 8.83-4.172l1.067-1.067A7 7 0 1 1 8 15ZM3.45 4.5a1.05 1.05 0 1 1 0-2.1 1.05 1.05 0 0 1 0 2.1Z"/></svg>
+                  <span id="modelLabel">Auto model</span>
+                </span>
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+              </button>
+              <div id="modelMenu" class="absolute bottom-12 left-0 z-20 hidden w-48 overflow-hidden rounded-[10px] border border-black/10 bg-white shadow-xl">
+                <div class="p-1 text-sm">
+                  <button onclick="pickModel('Auto model')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5">✨ Auto model</button>
+                  <button onclick="pickModel('Claude')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5">Claude</button>
+                  <button onclick="pickModel('GPT')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5">GPT</button>
+                  <button onclick="pickModel('Gemini')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5">Gemini</button>
+                  <button onclick="pickModel('Mistral')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5">Mistral</button>
+                  <button onclick="pickModel('Grok')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5">Grok</button>
+                  <button onclick="pickModel('DeepSeek')" class="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left hover:bg-black/5">DeepSeek</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="surpriseMe()" class="flex h-9 items-center gap-1.5 rounded-[10px] px-2.5 text-sm font-medium text-black transition-colors hover:bg-black/5">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+              Surprise me
+            </button>
+            <button onclick="submitPrompt()" class="homepage-submit-glow flex h-9 items-center justify-center gap-1.5 rounded-[10px] bg-cto-blue px-4 text-sm font-medium text-white shadow-md transition-colors hover:bg-cto-blue/90">
+              Submit
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MARKETPLACE ===================== -->
+<section id="marketplace" class="mx-auto w-full max-w-6xl px-6 pt-4 pb-16">
+  <div class="flex flex-col items-center gap-3 text-center">
+    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Hire a ready-made AI team</h2>
+    <p class="max-w-xl text-black/60">A marketplace to hire ready-made AI teams, or list your own team for sale.</p>
+  </div>
+
+  <div class="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+    <!-- Team card template: Engineering -->
+    <article>
+      <a href="#" onclick="openModal('signup');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
+        <div class="relative flex flex-1 flex-col justify-center overflow-hidden border-b border-black/10 px-5 py-6">
+          <div class="absolute inset-0 bg-slate-900/5"></div>
+          <div class="card-grid absolute inset-0"></div>
+          <div class="relative flex flex-col items-center gap-3">
+            <div class="flex flex-col items-center">
+              <div class="relative">
+                <div class="absolute inset-0 -m-2 animate-pulse rounded-full border border-black/15"></div>
+                <div class="absolute inset-0 -m-1 rounded-full border border-black/25"></div>
+                <div class="relative flex h-12 w-12 items-center justify-center rounded-full bg-black text-white shadow-sm">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
+                </div>
+              </div>
+              <p class="mt-2 max-w-[120px] text-center text-[10px] leading-tight text-black/60">Technical Lead</p>
+            </div>
+            <div class="flex min-h-[52px] w-full flex-wrap items-start justify-center gap-x-3 gap-y-2">
+              <div class="flex w-20 flex-col items-center text-center">
+                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">B</div>
+                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Backend Engineer</span>
+              </div>
+              <div class="flex w-20 flex-col items-center text-center">
+                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">F</div>
+                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Frontend Engineer</span>
+              </div>
+              <div class="flex w-20 flex-col items-center text-center">
+                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">Q</div>
+                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">QA Engineer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2.5 p-5">
+          <h3 class="truncate text-center text-lg font-medium">Engineering Team</h3>
+          <p class="line-clamp-2 min-h-[2lh] text-center text-[13px] leading-relaxed text-black/50">A full-stack engineering team that builds, tests, and ships SaaS products. Includes a technical lead who plans architecture and delegates work, a backend engineer for APIs and data layers, a frontend engineer for UI, and a QA engineer who writes and runs tests.</p>
+        </div>
+      </a>
+    </article>
+
+    <!-- Marketing -->
+    <article>
+      <a href="#" onclick="openModal('signup');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
+        <div class="relative flex flex-1 flex-col justify-center overflow-hidden border-b border-black/10 px-5 py-6">
+          <div class="absolute inset-0 bg-slate-900/5"></div>
+          <div class="card-grid absolute inset-0"></div>
+          <div class="relative flex flex-col items-center gap-3">
+            <div class="flex flex-col items-center">
+              <div class="relative">
+                <div class="absolute inset-0 -m-2 animate-pulse rounded-full border border-black/15"></div>
+                <div class="absolute inset-0 -m-1 rounded-full border border-black/25"></div>
+                <div class="relative flex h-12 w-12 items-center justify-center rounded-full bg-black text-white shadow-sm">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
+                </div>
+              </div>
+              <p class="mt-2 max-w-[120px] text-center text-[10px] leading-tight text-black/60">Marketing Strategist</p>
+            </div>
+            <div class="flex min-h-[52px] w-full flex-wrap items-start justify-center gap-x-3 gap-y-2">
+              <div class="flex w-20 flex-col items-center text-center">
+                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">C</div>
+                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Content Writer</span>
+              </div>
+              <div class="flex w-20 flex-col items-center text-center">
+                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">D</div>
+                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Data Analyst</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2.5 p-5">
+          <h3 class="truncate text-center text-lg font-medium">Marketing Agency</h3>
+          <p class="line-clamp-2 min-h-[2lh] text-center text-[13px] leading-relaxed text-black/50">A marketing team that plans campaigns, writes copy, and analyzes results. Includes a strategist who plans and coordinates, a content writer for blog posts and social media, and a data analyst who tracks metrics and reports on performance.</p>
+        </div>
+      </a>
+    </article>
+
+    <!-- Website Creation -->
+    <article>
+      <a href="#" onclick="openModal('signup');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
+        <div class="relative flex flex-1 flex-col justify-center overflow-hidden border-b border-black/10 px-5 py-6">
+          <div class="absolute inset-0 bg-slate-900/5"></div>
+          <div class="card-grid absolute inset-0"></div>
+          <div class="relative flex flex-col items-center gap-3">
+            <div class="flex flex-col items-center">
+              <div class="relative">
+                <div class="absolute inset-0 -m-2 animate-pulse rounded-full border border-black/15"></div>
+                <div class="absolute inset-0 -m-1 rounded-full border border-black/25"></div>
+                <div class="relative flex h-12 w-12 items-center justify-center rounded-full bg-black text-white shadow-sm">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
+                </div>
+              </div>
+              <p class="mt-2 max-w-[120px] text-center text-[10px] leading-tight text-black/60">Lead</p>
+            </div>
+            <div class="flex min-h-[52px] w-full flex-wrap items-start justify-center gap-x-3 gap-y-2">
+              <div class="flex w-20 flex-col items-center text-center">
+                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">M</div>
+                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Market Researcher</span>
+              </div>
+              <div class="flex w-20 flex-col items-center text-center">
+                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">S</div>
+                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Sales Rep</span>
+              </div>
+              <div class="flex w-20 flex-col items-center text-center">
+                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">W</div>
+                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Web Developer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2.5 p-5">
+          <h3 class="truncate text-center text-lg font-medium">Website Creation</h3>
+          <p class="line-clamp-2 min-h-[2lh] text-center text-[13px] leading-relaxed text-black/50">Website Creation for local businesses.</p>
+        </div>
+      </a>
+    </article>
+  </div>
+
+  <div class="mt-10 flex justify-center">
+    <a href="#" onclick="openModal('signup');return false" class="flex h-10 items-center justify-center gap-1.5 rounded-[10px] bg-white px-4 text-sm text-black shadow-md transition-colors hover:bg-white/80">
+      Browse the marketplace
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== TRUSTED BY ===================== -->
+<section class="flex flex-col items-center justify-center space-y-6 py-16 text-black/50">
+  <div class="text-sm">Trusted by teams at</div>
+  <div class="flex flex-wrap items-center justify-center gap-x-14 gap-y-6 px-6 opacity-60">
+    <span class="text-2xl font-bold tracking-tight text-black/40">Adobe</span>
+    <span class="text-2xl font-bold tracking-tight text-black/40">Microsoft</span>
+    <span class="text-2xl font-bold tracking-tight text-black/40">GitHub</span>
+    <span class="text-2xl font-bold tracking-tight text-black/40">Docker</span>
+  </div>
+</section>
+
+<!-- ===================== DARK FEATURES ===================== -->
+<section class="space-y-32 bg-cto-dark-blue px-6 py-24 text-white relative overflow-hidden">
+  <div class="dark-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Free forever -->
+  <div class="relative mx-auto grid max-w-3xl grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-8 md:gap-y-20">
+    <div class="flex flex-col gap-3">
+      <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
+        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
+      </div>
+      <h3 class="text-2xl font-semibold tracking-tight">Free forever</h3>
+      <p class="text-white/60 leading-relaxed">Ad-supported. No card or API keys required. Limits reset daily, with an optional Premium upgrade.</p>
+      <ul class="mt-2 space-y-2 text-sm text-white/70">
+        <li class="flex items-center gap-2"><span class="text-cto-blue">✓</span> No card or API keys required</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue">✓</span> Limits reset daily</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue">✓</span> Optional Premium upgrade</li>
+      </ul>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
+        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+      </div>
+      <h3 class="text-2xl font-semibold tracking-tight">Fast + smart</h3>
+      <p class="text-white/60 leading-relaxed">Latest AI models from Anthropic, OpenAI and more. Fast &amp; secure cloud sandboxes.</p>
+      <div class="mt-2 flex flex-wrap gap-2">
+        <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80">Claude</span>
+        <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80">OpenAI</span>
+        <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80">Gemini</span>
+        <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80">Mistral</span>
+        <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80">Grok</span>
+        <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80">DeepSeek</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
+        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3 class="text-2xl font-semibold tracking-tight">Agents that work</h3>
+      <p class="text-white/60 leading-relaxed">Multi-agent teams with web browsing, emails, scheduling, and more built-in.</p>
+      <ul class="mt-2 space-y-2 text-sm text-white/70">
+        <li class="flex items-center gap-2"><span class="text-cto-blue">✓</span> Multi-agent teams</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue">✓</span> Web browsing, emails, scheduling built-in</li>
+      </ul>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
+        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+      </div>
+      <h3 class="text-2xl font-semibold tracking-tight">MCP / skills</h3>
+      <p class="text-white/60 leading-relaxed">Linear, Sentry, Vercel, Notion &amp; more. Extensible with any MCP server.</p>
+      <button onclick="openModal('signup')" class="mt-2 flex w-fit items-center gap-1.5 rounded-[10px] bg-white/10 px-3 py-2 text-sm text-white transition-colors hover:bg-white/20">
+        Get integration recommendations
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <div class="relative mx-auto flex max-w-3xl flex-col items-center gap-8 text-center">
+    <div class="space-y-3">
+      <p class="text-sm uppercase tracking-widest text-white/50">It's free</p>
+      <h2 class="text-4xl md:text-5xl font-semibold tracking-tight">What will you build?</h2>
+    </div>
+    <div class="w-full max-w-2xl">
+      <div class="overflow-hidden rounded-[20px] border border-white/15 bg-white shadow-md">
+        <textarea id="prompt2" rows="1" aria-label="Describe the business you want to build"
+          class="flex min-h-14 w-full resize-none border-0 bg-transparent px-4 pt-4 text-base text-black placeholder:text-black/40 focus:outline-none focus:ring-0"
+          placeholder=""></textarea>
+        <div class="flex items-center justify-between rounded-b-[20px] bg-engine-sage px-4 py-3 border-t border-black/5">
+          <span class="flex items-center gap-2 text-xs text-black/60">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.41 10.45h.945L6.88 9.015h2.24l.525 1.435h.98L8.49 4.85H7.51L5.41 10.45ZM8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Z"/></svg>
+            Auto model
+          </span>
+          <button onclick="submitPrompt()" class="homepage-submit-glow flex h-9 items-center justify-center gap-1.5 rounded-[10px] bg-cto-blue px-4 text-sm font-medium text-white shadow-md transition-colors hover:bg-cto-blue/90">
+            Submit
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-cto-off-black px-6 py-16 text-white">
+  <div class="mx-auto flex max-w-6xl flex-col justify-between gap-10 xl:flex-row">
+    <div class="space-y-5 text-sm">
+      <svg viewBox="0 0 40 21" fill="none" class="h-6 fill-white" aria-hidden="true">
+        <path d="M8.5 20.9c-2.9 0-5.4-1.3-6.7-3.6C.6 15.5.1 13.2.1 10.5S.6 5.5 1.8 3.7C3.1 1.3 5.6.1 8.5.1c1.6 0 3 .4 4.1 1.1l-1.3 3.2c-.8-.5-1.7-.8-2.7-.8-2.9 0-4.7 2.3-4.7 6.9s1.8 6.9 4.7 6.9c1 0 1.9-.3 2.7-.8l1.3 3.2c-1.1.7-2.5 1.1-4.1 1.1z"/>
+        <path d="M19.6 20.9c-1.9 0-3.4-.6-4.4-1.7-1-1.1-1.5-2.7-1.5-4.7V3.4h3.9v2.1h2.9v3h-2.9v5.7c0 1.5.7 2.2 2.1 2.2.4 0 .8 0 1.1-.1l.4 3.2c-.6.3-1.3.4-2.6.4z"/>
+        <path d="M28.5 20.9c-2.9 0-5.3-1-7-2.9-1.6-1.9-2.4-4.4-2.4-7.5s.8-5.6 2.4-7.5c1.7-1.9 4.1-2.9 7-2.9s5.3 1 7 2.9c1.6 1.9 2.4 4.4 2.4 7.5s-.8 5.6-2.4 7.5c-1.7 1.9-4.1 2.9-7 2.9zm0-3.5c1.7 0 3-.6 3.9-1.8.9-1.2 1.4-2.9 1.4-5.1s-.5-3.9-1.4-5.1c-.9-1.2-2.2-1.8-3.9-1.8s-3 .6-3.9 1.8c-.9 1.2-1.4 2.9-1.4 5.1s.5 3.9 1.4 5.1c.9 1.2 2.2 1.8 3.9 1.8z"/>
+      </svg>
+      <div class="text-white/50">
+        <div>All rights reserved 2026,</div>
+        <div>Engine Labs</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-x-28 gap-y-8 sm:grid-cols-3 text-sm">
+      <div class="space-y-5">
+        <div class="font-medium">Company</div>
+        <div class="flex flex-col space-y-4 text-white/50">
+          <a class="hover:text-white/70 hover:underline" href="#">Documentation</a>
+          <a class="hover:text-white/70 hover:underline" href="#">Tools</a>
+          <a class="hover:text-white/70 hover:underline" href="#">Use cases</a>
+          <a class="hover:text-white/70 hover:underline" href="#">Guides</a>
+        </div>
+      </div>
+      <div class="space-y-5">
+        <div class="font-medium">Social</div>
+        <div class="flex flex-col space-y-4 text-white/50">
+          <a class="hover:text-white/70 hover:underline" href="#">GitHub</a>
+          <a class="hover:text-white/70 hover:underline" href="#">Discord</a>
+          <a class="hover:text-white/70 hover:underline" href="#">X (Twitter)</a>
+          <a class="hover:text-white/70 hover:underline" href="#">LinkedIn</a>
+        </div>
+      </div>
+      <div class="space-y-5">
+        <div class="font-medium">Legal</div>
+        <div class="flex flex-col space-y-4 text-white/50">
+          <a class="hover:text-white/70 hover:underline" href="#">Privacy</a>
+          <a class="hover:text-white/70 hover:underline" href="#">Terms</a>
+          <a class="hover:text-white/70 hover:underline" href="#">Cookies</a>
+          <a class="hover:text-white/70 hover:underline" href="#">Preferences</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== AUTH MODAL ===================== -->
+<div id="authModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+  <div class="w-full max-w-sm rounded-2xl border border-black/10 bg-white p-6 shadow-2xl">
+    <div class="flex items-center justify-between">
+      <h3 id="modalTitle" class="text-lg font-semibold">Create your account</h3>
+      <button onclick="closeModal()" class="text-black/40 hover:text-black" aria-label="Close">✕</button>
+    </div>
+    <p class="mt-1 text-sm text-black/50">Free forever. No credit card required.</p>
+    <form class="mt-5 space-y-3" onsubmit="event.preventDefault();closeModal();toast('This is a static clone — wire up your auth backend here.')">
+      <input type="email" required placeholder="Email" class="w-full rounded-[10px] border border-black/15 px-3 py-2.5 text-sm focus:border-cto-blue focus:outline-none">
+      <input type="password" required placeholder="Password" class="w-full rounded-[10px] border border-black/15 px-3 py-2.5 text-sm focus:border-cto-blue focus:outline-none">
+      <button class="w-full rounded-[10px] bg-cto-blue py-2.5 text-sm font-medium text-white shadow-md hover:bg-cto-blue/90">Continue</button>
+    </form>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 left-1/2 z-[110] hidden -translate-x-1/2 rounded-[10px] bg-black px-4 py-2.5 text-sm text-white shadow-xl"></div>
+
+<script>
+// ---- Animated placeholder typing ----
+const prompts = [
+  'A SaaS that turns meeting notes into tickets…',
+  'An online store for handmade ceramics…',
+  'A mobile app that plans my workouts…',
+  'A marketplace for freelance chefs…',
+  'An AI agent that answers customer emails…'
+];
+function typePlaceholder(el, list) {
+  let i = 0, j = 0, deleting = false;
+  function tick() {
+    const word = list[i];
+    if (!deleting) { j++; if (j === word.length) { deleting = true; setTimeout(tick, 1800); el.placeholder = word; return; } }
+    else { j--; if (j === 0) { deleting = false; i = (i + 1) % list.length; } }
+    el.placeholder = word.slice(0, j);
+    setTimeout(tick, deleting ? 22 : 45);
+  }
+  tick();
+}
+typePlaceholder(document.getElementById('prompt'), prompts);
+typePlaceholder(document.getElementById('prompt2'), prompts);
+
+// ---- Textarea autosize + Enter to submit ----
+document.querySelectorAll('textarea').forEach(t => {
+  t.addEventListener('input', () => { t.style.height = 'auto'; t.style.height = Math.min(t.scrollHeight, 200) + 'px'; });
+  t.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitPrompt(); } });
+});
+
+// ---- Model dropdown ----
+function toggleDropdown(id) {
+  document.getElementById(id).classList.toggle('hidden');
+}
+function pickModel(name) {
+  document.getElementById('modelLabel').textContent = name;
+  document.getElementById('modelMenu').classList.add('hidden');
+}
+document.addEventListener('click', e => {
+  const menu = document.getElementById('modelMenu');
+  const btn = document.getElementById('modelBtn');
+  if (!menu.classList.contains('hidden') && !menu.contains(e.target) && !btn.contains(e.target)) menu.classList.add('hidden');
+});
+
+// ---- Surprise me ----
+const surprises = [
+  'A subscription box service for rare houseplants',
+  'An app that matches roommates by sleep schedule',
+  'A B2B tool that automates invoice chasing',
+  'A platform connecting local farmers to restaurants',
+  'A Chrome extension that summarizes legal documents',
+  'A virtual co-working space for night owls',
+  'An AI tutor for high-school physics'
+];
+function surpriseMe() {
+  const t = document.getElementById('prompt');
+  t.value = surprises[Math.floor(Math.random() * surprises.length)];
+  t.dispatchEvent(new Event('input'));
+  t.focus();
+}
+
+// ---- Submit ----
+function submitPrompt() {
+  const t1 = document.getElementById('prompt');
+  const t2 = document.getElementById('prompt2');
+  const v = (t1.value || t2.value).trim();
+  if (!v) { toast('Describe what you want to build first ✍️'); (t1.value ? t2 : t1).focus(); return; }
+  openModal('signup');
+}
+
+// ---- Modal & toast ----
+function openModal(mode) {
+  document.getElementById('modalTitle').textContent = mode === 'signin' ? 'Welcome back' : 'Create your account';
+  const m = document.getElementById('authModal');
+  m.classList.remove('hidden'); m.classList.add('flex');
+}
+function closeModal() {
+  const m = document.getElementById('authModal');
+  m.classList.add('hidden'); m.classList.remove('flex');
+}
+document.getElementById('authModal').addEventListener('click', e => { if (e.target.id === 'authModal') closeModal(); });
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.remove('hidden');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.add('hidden'), 3200);
+}
+</script>
+</body>
+</html>
