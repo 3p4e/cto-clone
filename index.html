@@ -90,8 +90,7 @@ tailwind.config = {
   </div>
 
   <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-    
-    <a class="tracking-[0.01em] hover:text-black/50 transition-colors" href="#marketplace">Marketplace</a>
+    <a class="tracking-[0.01em] hover:text-black/50 transition-colors" href="#how">How it works</a>
     <a class="tracking-[0.01em] hover:text-black/50 transition-colors" href="#">Docs</a>
   </nav>
 
@@ -164,137 +163,43 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ===================== MARKETPLACE ===================== -->
-<section id="marketplace" class="mx-auto w-full max-w-6xl px-6 pt-4 pb-16">
-  <div class="flex flex-col items-center gap-3 text-center">
-    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Hire a ready-made AI team</h2>
-    <p class="max-w-xl text-black/60">A marketplace to hire ready-made AI teams, or list your own team for sale.</p>
+<!-- ===================== HOW IT WORKS ===================== -->
+<section id="how" class="mx-auto w-full max-w-6xl px-6 pt-4 pb-20">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">From prompt to running app</h2>
+    <p class="mt-3 text-lg text-black/60">The agent plans, edits, runs and tests your project. You review every step in the same window.</p>
   </div>
-
-  <div class="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-
-    <!-- Team card template: Engineering -->
-    <article>
-      <a href="#" onclick="openModal('signin');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
-        <div class="relative flex flex-1 flex-col justify-center overflow-hidden border-b border-black/10 px-5 py-6">
-          <div class="absolute inset-0 bg-slate-900/5"></div>
-          <div class="card-grid absolute inset-0"></div>
-          <div class="relative flex flex-col items-center gap-3">
-            <div class="flex flex-col items-center">
-              <div class="relative">
-                <div class="absolute inset-0 -m-2 animate-pulse rounded-full border border-black/15"></div>
-                <div class="absolute inset-0 -m-1 rounded-full border border-black/25"></div>
-                <div class="relative flex h-12 w-12 items-center justify-center rounded-full bg-black text-white shadow-sm">
-                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
-                </div>
-              </div>
-              <p class="mt-2 max-w-[120px] text-center text-[10px] leading-tight text-black/60">Technical Lead</p>
-            </div>
-            <div class="flex min-h-[52px] w-full flex-wrap items-start justify-center gap-x-3 gap-y-2">
-              <div class="flex w-20 flex-col items-center text-center">
-                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">B</div>
-                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Backend Engineer</span>
-              </div>
-              <div class="flex w-20 flex-col items-center text-center">
-                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">F</div>
-                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Frontend Engineer</span>
-              </div>
-              <div class="flex w-20 flex-col items-center text-center">
-                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">Q</div>
-                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">QA Engineer</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col gap-2.5 p-5">
-          <h3 class="truncate text-center text-lg font-medium">Engineering Team</h3>
-          <p class="line-clamp-2 min-h-[2lh] text-center text-[13px] leading-relaxed text-black/50">A full-stack engineering team that builds, tests, and ships SaaS products. Includes a technical lead who plans architecture and delegates work, a backend engineer for APIs and data layers, a frontend engineer for UI, and a QA engineer who writes and runs tests.</p>
-        </div>
-      </a>
-    </article>
-
-    <!-- Marketing -->
-    <article>
-      <a href="#" onclick="openModal('signin');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
-        <div class="relative flex flex-1 flex-col justify-center overflow-hidden border-b border-black/10 px-5 py-6">
-          <div class="absolute inset-0 bg-slate-900/5"></div>
-          <div class="card-grid absolute inset-0"></div>
-          <div class="relative flex flex-col items-center gap-3">
-            <div class="flex flex-col items-center">
-              <div class="relative">
-                <div class="absolute inset-0 -m-2 animate-pulse rounded-full border border-black/15"></div>
-                <div class="absolute inset-0 -m-1 rounded-full border border-black/25"></div>
-                <div class="relative flex h-12 w-12 items-center justify-center rounded-full bg-black text-white shadow-sm">
-                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
-                </div>
-              </div>
-              <p class="mt-2 max-w-[120px] text-center text-[10px] leading-tight text-black/60">Marketing Strategist</p>
-            </div>
-            <div class="flex min-h-[52px] w-full flex-wrap items-start justify-center gap-x-3 gap-y-2">
-              <div class="flex w-20 flex-col items-center text-center">
-                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">C</div>
-                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Content Writer</span>
-              </div>
-              <div class="flex w-20 flex-col items-center text-center">
-                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">D</div>
-                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Data Analyst</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col gap-2.5 p-5">
-          <h3 class="truncate text-center text-lg font-medium">Marketing Agency</h3>
-          <p class="line-clamp-2 min-h-[2lh] text-center text-[13px] leading-relaxed text-black/50">A marketing team that plans campaigns, writes copy, and analyzes results. Includes a strategist who plans and coordinates, a content writer for blog posts and social media, and a data analyst who tracks metrics and reports on performance.</p>
-        </div>
-      </a>
-    </article>
-
-    <!-- Website Creation -->
-    <article>
-      <a href="#" onclick="openModal('signin');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
-        <div class="relative flex flex-1 flex-col justify-center overflow-hidden border-b border-black/10 px-5 py-6">
-          <div class="absolute inset-0 bg-slate-900/5"></div>
-          <div class="card-grid absolute inset-0"></div>
-          <div class="relative flex flex-col items-center gap-3">
-            <div class="flex flex-col items-center">
-              <div class="relative">
-                <div class="absolute inset-0 -m-2 animate-pulse rounded-full border border-black/15"></div>
-                <div class="absolute inset-0 -m-1 rounded-full border border-black/25"></div>
-                <div class="relative flex h-12 w-12 items-center justify-center rounded-full bg-black text-white shadow-sm">
-                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
-                </div>
-              </div>
-              <p class="mt-2 max-w-[120px] text-center text-[10px] leading-tight text-black/60">Lead</p>
-            </div>
-            <div class="flex min-h-[52px] w-full flex-wrap items-start justify-center gap-x-3 gap-y-2">
-              <div class="flex w-20 flex-col items-center text-center">
-                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">M</div>
-                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Market Researcher</span>
-              </div>
-              <div class="flex w-20 flex-col items-center text-center">
-                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">S</div>
-                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Sales Rep</span>
-              </div>
-              <div class="flex w-20 flex-col items-center text-center">
-                <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-cto-blue text-xs font-bold text-white">W</div>
-                <span class="mt-1 text-center text-[9px] uppercase leading-tight tracking-wider text-black/50">Web Developer</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col gap-2.5 p-5">
-          <h3 class="truncate text-center text-lg font-medium">Website Creation</h3>
-          <p class="line-clamp-2 min-h-[2lh] text-center text-[13px] leading-relaxed text-black/50">Website Creation for local businesses.</p>
-        </div>
-      </a>
-    </article>
-  </div>
-
-  <div class="mt-10 flex justify-center">
-    <a href="#" onclick="openModal('signin');return false" class="flex h-10 items-center justify-center gap-1.5 rounded-[10px] bg-white px-4 text-sm text-black shadow-md transition-colors hover:bg-white/80">
-      Browse the marketplace
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-    </a>
+  <div class="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="flex flex-col gap-3">
+      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
+      <h3 class="font-medium">Chat</h3>
+      <p class="text-sm leading-relaxed text-black/60">Describe what you want to build in plain language.</p>
+    </div>
+    <div class="flex flex-col gap-3">
+      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg></div>
+      <h3 class="font-medium">Plan</h3>
+      <p class="text-sm leading-relaxed text-black/60">The agent breaks the work into an ordered plan you can follow.</p>
+    </div>
+    <div class="flex flex-col gap-3">
+      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg></div>
+      <h3 class="font-medium">Edit</h3>
+      <p class="text-sm leading-relaxed text-black/60">Files are written and changed inside your own project.</p>
+    </div>
+    <div class="flex flex-col gap-3">
+      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg></div>
+      <h3 class="font-medium">Run</h3>
+      <p class="text-sm leading-relaxed text-black/60">Commands execute in an isolated sandbox, never on the host.</p>
+    </div>
+    <div class="flex flex-col gap-3">
+      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></div>
+      <h3 class="font-medium">Test</h3>
+      <p class="text-sm leading-relaxed text-black/60">Results come back with clear pass or fail signals.</p>
+    </div>
+    <div class="flex flex-col gap-3">
+      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg></div>
+      <h3 class="font-medium">Preview</h3>
+      <p class="text-sm leading-relaxed text-black/60">Open the running app, then iterate on the next change.</p>
+    </div>
   </div>
 </section>
 
@@ -349,10 +254,10 @@ tailwind.config = {
         <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       </div>
       <h3 class="text-2xl font-semibold tracking-tight">Agents that work</h3>
-      <p class="text-white/60 leading-relaxed">Multi-agent teams with web browsing, emails, scheduling, and more built-in.</p>
+      <p class="text-white/60 leading-relaxed">One primary agent that plans, edits files, runs commands and tests in an isolated sandbox.</p>
       <ul class="mt-2 space-y-2 text-sm text-white/70">
-        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Multi-agent teams</li>
-        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Web browsing, emails, scheduling built-in</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Plans, edits and runs code</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Isolated, per-project sandbox</li>
       </ul>
     </div>
 
