@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BACK_LOG - Build anything with AI. Free forever.</title>
-<meta name="description" content="Build apps, agents and startups on the best AI models. No credit card or API key required.">
+<title>BACK_LOG - Build anything with AI.</title>
+<meta name="description" content="Self-hosted AI workspace. Invite-only access with your own model providers and API keys.">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
@@ -90,7 +90,7 @@ tailwind.config = {
   </div>
 
   <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-    <a class="tracking-[0.01em] hover:text-black/50 transition-colors" href="#">Pricing</a>
+    
     <a class="tracking-[0.01em] hover:text-black/50 transition-colors" href="#marketplace">Marketplace</a>
     <a class="tracking-[0.01em] hover:text-black/50 transition-colors" href="#">Docs</a>
   </nav>
@@ -99,8 +99,8 @@ tailwind.config = {
     <a aria-label="Join our Discord community" href="#" class="hidden sm:block text-[#545365] hover:text-black transition-colors">
       <svg class="w-5 h-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019M5.347 10.214c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/></svg>
     </a>
-    <button onclick="openModal('signup')" class="flex h-9 items-center justify-center rounded-[10px] bg-cto-blue px-3 text-[13px] font-medium text-white shadow-md transition-colors hover:bg-cto-blue/90 w-28">Sign up for free</button>
-    <button onclick="openModal('signin')" class="flex h-9 items-center justify-center rounded-[10px] bg-white/70 px-3 text-[13px] font-medium text-black shadow-md transition-colors hover:bg-white w-16">Sign in</button>
+    <button onclick="openModal('signin')" class="flex h-9 items-center justify-center rounded-[10px] bg-cto-blue px-3 text-[13px] font-medium text-white shadow-md transition-colors hover:bg-cto-blue/90 w-20">Sign in</button>
+    
   </div>
 </header>
 
@@ -112,10 +112,10 @@ tailwind.config = {
   <div class="relative flex w-full flex-col items-center justify-center space-y-10">
     <div class="space-y-4 text-center">
       <h1 class="fade-up text-center text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05]">
-        <span class="block md:inline">Build your </span><span class="whitespace-nowrap">business with AI.</span><br>Free forever.
+        <span class="block md:inline">Build your </span><span class="whitespace-nowrap">business with AI.</span>
       </h1>
       <h2 class="fade-up fade-up-1 w-full text-center text-base md:text-lg text-black/60">
-        Start or grow your company by chatting with AI.<br>No credit card required.
+        Start or grow your company by chatting with AI.<br>Bring your own models and your own keys.
       </h2>
     </div>
 
@@ -175,7 +175,7 @@ tailwind.config = {
 
     <!-- Team card template: Engineering -->
     <article>
-      <a href="#" onclick="openModal('signup');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
+      <a href="#" onclick="openModal('signin');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
         <div class="relative flex flex-1 flex-col justify-center overflow-hidden border-b border-black/10 px-5 py-6">
           <div class="absolute inset-0 bg-slate-900/5"></div>
           <div class="card-grid absolute inset-0"></div>
@@ -215,7 +215,7 @@ tailwind.config = {
 
     <!-- Marketing -->
     <article>
-      <a href="#" onclick="openModal('signup');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
+      <a href="#" onclick="openModal('signin');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
         <div class="relative flex flex-1 flex-col justify-center overflow-hidden border-b border-black/10 px-5 py-6">
           <div class="absolute inset-0 bg-slate-900/5"></div>
           <div class="card-grid absolute inset-0"></div>
@@ -251,7 +251,7 @@ tailwind.config = {
 
     <!-- Website Creation -->
     <article>
-      <a href="#" onclick="openModal('signup');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
+      <a href="#" onclick="openModal('signin');return false" class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-black/20 hover:shadow-lg">
         <div class="relative flex flex-1 flex-col justify-center overflow-hidden border-b border-black/10 px-5 py-6">
           <div class="absolute inset-0 bg-slate-900/5"></div>
           <div class="card-grid absolute inset-0"></div>
@@ -291,7 +291,7 @@ tailwind.config = {
   </div>
 
   <div class="mt-10 flex justify-center">
-    <a href="#" onclick="openModal('signup');return false" class="flex h-10 items-center justify-center gap-1.5 rounded-[10px] bg-white px-4 text-sm text-black shadow-md transition-colors hover:bg-white/80">
+    <a href="#" onclick="openModal('signin');return false" class="flex h-10 items-center justify-center gap-1.5 rounded-[10px] bg-white px-4 text-sm text-black shadow-md transition-colors hover:bg-white/80">
       Browse the marketplace
       <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
     </a>
@@ -313,18 +313,18 @@ tailwind.config = {
 <section class="space-y-32 bg-cto-dark-blue px-6 py-24 text-white relative overflow-hidden">
   <div class="dark-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
 
-  <!-- Free forever -->
+  <!-- Your stack, your keys -->
   <div class="relative mx-auto grid max-w-3xl grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-8 md:gap-y-20">
     <div class="flex flex-col gap-3">
       <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
         <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
       </div>
-      <h3 class="text-2xl font-semibold tracking-tight">Free forever</h3>
-      <p class="text-white/60 leading-relaxed">Ad-supported. No card or API keys required. Limits reset daily, with an optional Premium upgrade.</p>
+      <h3 class="text-2xl font-semibold tracking-tight">Your stack, your keys</h3>
+      <p class="text-white/60 leading-relaxed">Connect Anthropic, OpenAI, Gemini and more with your own API keys. Runs on your own infrastructure, under your control.</p>
       <ul class="mt-2 space-y-2 text-sm text-white/70">
-        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> No card or API keys required</li>
-        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Limits reset daily</li>
-        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Optional Premium upgrade</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Bring your own API keys</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> No per-seat pricing</li>
+        <li class="flex items-center gap-2"><span class="text-cto-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> No quotas, full control</li>
       </ul>
     </div>
 
@@ -362,7 +362,7 @@ tailwind.config = {
       </div>
       <h3 class="text-2xl font-semibold tracking-tight">MCP / skills</h3>
       <p class="text-white/60 leading-relaxed">Linear, Sentry, Vercel, Notion &amp; more. Extensible with any MCP server.</p>
-      <button onclick="openModal('signup')" class="mt-2 flex w-fit items-center gap-1.5 rounded-[10px] bg-white/10 px-3 py-2 text-sm text-white transition-colors hover:bg-white/20">
+      <button onclick="openModal('signin')" class="mt-2 flex w-fit items-center gap-1.5 rounded-[10px] bg-white/10 px-3 py-2 text-sm text-white transition-colors hover:bg-white/20">
         Get integration recommendations
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
       </button>
@@ -372,7 +372,7 @@ tailwind.config = {
   <!-- Final CTA -->
   <div class="relative mx-auto flex max-w-3xl flex-col items-center gap-8 text-center">
     <div class="space-y-3">
-      <p class="text-sm uppercase tracking-widest text-white/50">It's free</p>
+      <p class="text-sm uppercase tracking-widest text-white/50">Invite only</p>
       <h2 class="text-4xl md:text-5xl font-semibold tracking-tight">What will you build?</h2>
     </div>
     <div class="w-full max-w-2xl">
@@ -443,10 +443,10 @@ tailwind.config = {
 <div id="authModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
   <div class="w-full max-w-sm rounded-2xl border border-black/10 bg-white p-6 shadow-2xl">
     <div class="flex items-center justify-between">
-      <h3 id="modalTitle" class="text-lg font-semibold">Create your account</h3>
+      <h3 id="modalTitle" class="text-lg font-semibold">Sign in</h3>
       <button onclick="closeModal()" class="text-black/40 hover:text-black" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
     </div>
-    <p class="mt-1 text-sm text-black/50">Free forever. No credit card required.</p>
+    <p class="mt-1 text-sm text-black/50">Accounts are created by the workspace admin. Sign in with the credentials you were given.</p>
     <form class="mt-5 space-y-3" onsubmit="event.preventDefault();closeModal();toast('This is a static clone - wire up your auth backend here.')">
       <input type="email" required placeholder="Email" class="w-full rounded-[10px] border border-black/15 px-3 py-2.5 text-sm focus:border-cto-blue focus:outline-none">
       <input type="password" required placeholder="Password" class="w-full rounded-[10px] border border-black/15 px-3 py-2.5 text-sm focus:border-cto-blue focus:outline-none">
@@ -524,12 +524,12 @@ function submitPrompt() {
   const t2 = document.getElementById('prompt2');
   const v = (t1.value || t2.value).trim();
   if (!v) { toast('Describe what you want to build first'); (t1.value ? t2 : t1).focus(); return; }
-  openModal('signup');
+  openModal('signin');
 }
 
 // ---- Modal & toast ----
 function openModal(mode) {
-  document.getElementById('modalTitle').textContent = mode === 'signin' ? 'Welcome back' : 'Create your account';
+  document.getElementById('modalTitle').textContent = mode === 'signin' ? 'Welcome back' : 'Sign in';
   const m = document.getElementById('authModal');
   m.classList.remove('hidden'); m.classList.add('flex');
 }
